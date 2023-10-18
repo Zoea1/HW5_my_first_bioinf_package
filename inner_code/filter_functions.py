@@ -65,7 +65,7 @@ import os
 def turn_into_dict(input_path: str):
     """
     """
-    seqs = dict{}
+    seqs = dict()
     name = []
     sequence = []
     comment = []
