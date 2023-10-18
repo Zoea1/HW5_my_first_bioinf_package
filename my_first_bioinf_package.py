@@ -19,7 +19,6 @@ def filter_fastq(input_path: str, output_filename: str =None, length_bounds: Uni
         bad_keys3 = filter_quality(quality_threshold, key, value)
     for key in set(bad_keys1 + bad_keys2 + bad_keys3):
         del seqs[key]
-    return seqs
     turn_into_fastq(seqs, input_path, output_filename)
 
 
