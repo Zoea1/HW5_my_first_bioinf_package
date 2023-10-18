@@ -59,3 +59,46 @@ def filter_quality(quality_threshold: int, key: str, value: Union [tuple, str]):
     if mean_quality < quality_threshold:
         bad_keys3.append(key)
     return bad_keys3
+
+
+import os
+def turn_into_dict(input_path: str):
+    """
+    """
+    seqs = dict{}
+    name = []
+    sequence = []
+    comment = []
+    quality = []
+    if os.path.isfile(input_path) == False:
+        raise ValueError ('The path does not exist!')
+    with open(os.path.join(input_path)) as file: 
+        for i in file:
+            name.append(file.readline())
+            if name[i] != '':
+                sequence.append(file.readline())
+                comment.append(file.readline())
+                quality.append(file.readline())
+    for i in range (len(sequence)):
+        seqs[name[i]] = (sequence[i], comment[i], quality[i])
+    return seqs
+
+
+import os
+def turn_into_fastq(seqs, input_path: str, output_filename: str = None,):
+    """
+    """
+    output_dir = 'fastq_filtrator_results'
+    if os.path.isdir(output_dir) == False:
+        os.mkdir(output_dir)
+    if type(output_filename) == None:
+        filename = os.path.basename(input_path)
+    else:
+        filename = output_filename
+    with open(os.path.join(output_dir, filename), mode = 'w') as file:
+        for key, value in seqs:
+            file.write(key + '\n')
+            file.write(value[0] + '\n')
+            file.write(value[1] + '\n')
+            file.write(value[2] + '\n')
+    
