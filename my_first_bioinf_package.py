@@ -1,30 +1,18 @@
-import os.path
-def turning_into_dictionary(input_path: str, output_filename: str = None):
-    """
-    """
-    pass
-    if os.path.isfile == False:
-        raise ValueError ('The path is not exist!')
-    if type(output_filename) == None:
-        filename = os.path.basename(input_path)
-    else:
-        filename = output_filename.fastq
-    os.path.join('fastq_filter_results', filename)
-
-
-from inner_code.filter_functions import filter_gc_content, filter_length, filter_quality
+from inner_code.filter_functions import filter_gc_content, filter_length, filter_quality, turn_into_dict, turn_into_fastq
 from typing import Tuple, Union
-def filter_fastq(seqs: dict, length_bounds: Union [tuple, int] =(0, 2**32), gc_bounds: Union [tuple, int] =(0, 100), quality_threshold: int=0) -> dict: 
+def filter_fastq(input_path: str, output_filename: str =None, length_bounds: Union [tuple, int] =(0, 2**32), gc_bounds: Union [tuple, int] =(0, 100), quality_threshold: int=0) -> dict: 
     """  
     Returns filtered sequences 
     Arguments:
-    seqs (dict) - the dictionary with the sequences that should be filtered;
+    input_path (str) - the path of the fastq file with the sequences that should be filtered;
+    output_filename (str) - the 
     gc_bounds (tuple or int) - the boundaries for gc-content; default meaning - (0; 100); 
     length_bounds (tuple or int) - the boundaries for length; default meaning - (0, 2**32);
     quality_threshold (int) - the number for quality threshold; default meaning - 0
     Return:
-    dict - filtered sequences, collected in a dictionary  
+    output_filename file - filtered sequences, collected in a fastq file with the name chosen by a user (default name - as the name of the unfiltered file)
     """
+    seqs = turn_into_dict(input_path)
     for key, value in seqs.items():
         bad_keys1 = filter_gc_content(gc_bounds, key, value)
         bad_keys2 = filter_length(length_bounds, key, value)
@@ -32,6 +20,8 @@ def filter_fastq(seqs: dict, length_bounds: Union [tuple, int] =(0, 2**32), gc_b
     for key in set(bad_keys1 + bad_keys2 + bad_keys3):
         del seqs[key]
     return seqs
+turn_into_fastq(seqs)
+
 
 from inner_code.protein_functions import count_aa_length, count_nucl_length
 def protein_tools(function : str, *prots : str) -> (int): 
