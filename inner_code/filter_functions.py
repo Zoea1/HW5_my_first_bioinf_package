@@ -85,7 +85,7 @@ def turn_into_dict(input_path: str):
 
 
 import os
-def turn_into_fastq(seqs, input_path: str, output_filename: str = None,):
+def turn_into_fastq(seqs, input_path: str, output_filename: str = None):
     """
     """
     output_dir = 'fastq_filtrator_results'
