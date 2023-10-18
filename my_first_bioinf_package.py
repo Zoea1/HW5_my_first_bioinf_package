@@ -20,7 +20,7 @@ def filter_fastq(input_path: str, output_filename: str =None, length_bounds: Uni
     for key in set(bad_keys1 + bad_keys2 + bad_keys3):
         del seqs[key]
     return seqs
-turn_into_fastq(seqs)
+    turn_into_fastq(seqs, input_path, output_filename)
 
 
 from inner_code.protein_functions import count_aa_length, count_nucl_length
