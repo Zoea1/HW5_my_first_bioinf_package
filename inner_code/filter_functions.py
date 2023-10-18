@@ -62,7 +62,7 @@ def filter_quality(quality_threshold: int, key: str, value: Union [tuple, str]):
 
 
 import os
-def turn_into_dict(input_path: str):
+def turn_into_dict(input_path: str) -> dict:
     """
     Turns a fastq file into a dictionary that can be processed further
     Arguments:
