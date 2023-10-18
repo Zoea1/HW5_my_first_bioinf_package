@@ -64,6 +64,11 @@ def filter_quality(quality_threshold: int, key: str, value: Union [tuple, str]):
 import os
 def turn_into_dict(input_path: str):
     """
+    Turns a fastq file into a dictionary that can be processed further
+    Arguments:
+    input_path (str) - the path of the fastq file with the sequences that should be filtered;
+    Return:
+    dictionary 
     """
     seqs = dict()
     name = []
@@ -85,8 +90,14 @@ def turn_into_dict(input_path: str):
 
 
 import os
-def turn_into_fastq(seqs, input_path: str, output_filename: str = None):
+def turn_into_fastq(seqs: dict, input_path: str, output_filename: str = None):
     """
+    Turns a dictionary into a fastq file that will be saved
+    Arguments:
+    input_path (str) - the path of the fastq file with the sequences that should be filtered;
+    output_filename - 
+    Return:
+    output_filename file - filtered sequences, collected in a fastq file with the name chosen by a user (default name - as the name of the unfiltered file)
     """
     output_dir = 'fastq_filtrator_results'
     if os.path.isdir(output_dir) == False:
