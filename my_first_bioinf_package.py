@@ -1,3 +1,17 @@
+import os.path
+def turning_into_dictionary(input_path: str, output_filename: str = None):
+    """
+    """
+    pass
+    if os.path.isfile == False:
+        raise ValueError ('The path is not exist!')
+    if type(output_filename) == None:
+        filename = os.path.basename(input_path)
+    else:
+        filename = output_filename.fastq
+    os.path.join('fastq_filter_results', filename)
+
+
 from inner_code.filter_functions import filter_gc_content, filter_length, filter_quality
 from typing import Tuple, Union
 def filter_fastq(seqs: dict, length_bounds: Union [tuple, int] =(0, 2**32), gc_bounds: Union [tuple, int] =(0, 100), quality_threshold: int=0) -> dict: 
