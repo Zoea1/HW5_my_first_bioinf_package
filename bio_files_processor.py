@@ -27,7 +27,7 @@ def convert_multiline_fasta_to_oneline(input_fasta: str, output_fasta: str = Non
         file.write(sequence)
     
 import os
-def change_fasta_start_pos(input_fasta: str, shift: int, output_fasta: str):
+def change_fasta_start_pos(input_fasta: str, shift: int, output_fasta: str = None):
     """
     Arguments: 
     input_fasta (str) - a path to a fasta file which should be shifted
