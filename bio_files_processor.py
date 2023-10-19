@@ -26,7 +26,7 @@ def convert_multiline_fasta_to_oneline(input_fasta: str, output_fasta: str = Non
     with open(os.path.join(output_dir, output_fasta_2), mode = 'w') as file:
         file.write(sequence)
     
-
+import os
 def change_fasta_start_pos(input_fasta: str, shift: int, output_fasta: str):
     """
     Arguments: 
