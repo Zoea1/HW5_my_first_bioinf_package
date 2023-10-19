@@ -18,7 +18,8 @@ def convert_multiline_fasta_to_oneline(input_fasta: str, output_fasta: str = Non
                 sequence = ''.join(sequence.append(line))
     output_dir = os.path.dirname(input_fasta)
     if output_fasta == None:
-        output_fasta_2 = os.path.basename(input_fasta)
+        input_fasta2 = os.path.basename(input_fasta) + '_2'
+        output_fasta_2 = os.path.basename(input_fasta2)
     elif output_fasta.find('.fasta') == False:
         output_fasta_2 = output_fasta + '.fasta'
     else:
@@ -53,7 +54,8 @@ def change_fasta_start_pos(input_fasta: str, shift: int, output_fasta: str = Non
             return result_sequence
     output_dir = os.path.dirname(input_fasta)
     if output_fasta == None:
-        output_fasta_2 = os.path.basename(input_fasta)
+        input_fasta2 = os.path.basename(input_fasta) + '_2'
+        output_fasta_2 = os.path.basename(input_fasta2)
     elif output_fasta.find('.fasta') == False:
         output_fasta_2 = output_fasta + '.fasta'
     else:
