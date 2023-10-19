@@ -46,7 +46,7 @@ def change_fasta_start_pos(input_fasta: str, shift: int, output_fasta: str):
                 last_part_line = line[shift+1:]
                 shifting_nucleotide = line[shift]
                 result_sequence = shifting_nucleotide + first_part_line + last_part_line 
-            else:
+            elif shift == -1:
                 shifting_nucleotide = line[shift]
                 first_part_line = line[:shift]
                 result_sequence = shifting_nucleotide + first_part_line
